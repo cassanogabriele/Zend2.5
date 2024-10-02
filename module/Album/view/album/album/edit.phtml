@@ -1,0 +1,30 @@
+<?php
+$title = "Modifier l'album";
+$this->headTitle($title);
+?>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles" id="title-blog" ><?php echo $this->escapeHtml($title); ?></h1>
+  </div>
+</div>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'album',
+    array(
+        'action' => 'edit',
+        'id'     => $this->id,
+    )
+));
+
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('artist'));
+echo "&nbsp;";
+echo $this->formRow($form->get('title'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

@@ -1,0 +1,36 @@
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<?php 
+$this->headLink()->appendStylesheet('/css/style.css'); 
+?>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles" id="title-blog" >Blog</h1>
+	
+    <p class="lead">Participez à mon blog en ajoutant des sujets.</p>
+  </div>
+</div>
+
+<?php foreach ($this->posts as $post): ?> 
+<article>  
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4 titles-articles" id="post<?= $post->getId() ?>"><?= $post->getTitle() ?></h1>
+		
+	
+			<p class="sujets">
+			<?= $post->getText() ?>
+				
+			<br><br>
+			
+			<section class="buttons-section">
+				<button type="button" class="btn btn-success"><a style="color:#ffffff;" href="blog/<?php echo $post->getId(); ?>">Détails</a></button>		
+				<button type="button" class="btn btn-primary"><a style="color:#ffffff;" href="blog/edit/<?php echo $post->getId(); ?>">Modifier</a></button>
+				<button type="button" class="btn btn-danger"><a style="color:#ffffff;" href="blog/delete/<?php echo $post->getId(); ?>">Supprimer</a></button>
+			</section>
+			</p>	
+		</div>	
+	</div>
+	
+</article>
+<?php endforeach ?>

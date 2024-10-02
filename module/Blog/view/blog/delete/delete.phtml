@@ -1,0 +1,29 @@
+<!--
+Modification de la vue 
+**********************
+On indique au formulaire qu'il doit envoyer ses données à l'URL actuelle, puis on indique au formulaire de se préparer, ce qui déclenche 
+quelques éléments internes. Les formulaires HTML peuvent être envoyés en utilisant "POST" et "GET". La valeur par défaut de ZF2 est "POST", 
+on n'a donc pas besoin d'être explicite dans la définition de cette option. Si on veut le changer en "GET", tout ce qu'on à à faire, c'est de 
+définir l'attribut spécifique avant l'appel de "prepare()". Ensuite, on utilise quelques "View Helpers" qui s'occupent de rentre le formulaire.
+Il existe de nombreuses façons de créer un formulaire dans Zend mais l'utilisation de "Form Collection()" est la plus rapide. Le formulaire s'affiche 
+mais on n'a pas encore ajouté de logique au contrôleur.
+-->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles" id="title-blog" >Suppression d'un sujet</h1>	
+  </div>
+</div>
+
+<p>
+    <h4>Etes-vous sûr de vouloir le supprimer ce sujet : </h4>
+	<br>
+    '<?php echo $this->escapeHtml($this->post->getTitle()); ?>' par
+    '<?php echo $this->escapeHtml($this->post->getText()); ?>' ?
+</p>
+ 
+<form id="buttons-action" action="<?php echo $this->url('blog/delete', array(), true) ?>" method="post">
+    <br>
+	<input type="submit" class="btn btn-info" name="delete_confirmation" value="oui">
+    <input type="submit" class="btn btn-danger" name="delete_confirmation" value="non">
+</form>
+

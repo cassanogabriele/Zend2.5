@@ -1,0 +1,16 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles" id="title-blog" >Modifier le sujet</h1>	
+  </div>
+</div>
+ 
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('blog/edit', array(), true));
+$form->prepare();
+
+$form->get('submit')->setValue('Modifier')->setAttribute('class', 'btn btn-warning');
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();

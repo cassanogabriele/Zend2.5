@@ -1,0 +1,56 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Albums Selection '. $this->translate('- Mes albums favoris'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath('css/style.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img style="height:140px;" src="<?php echo $this->basePath('img/albums selection.png') ?>" alt="album selection"/>&nbsp;<?php echo $this->translate('Contribue à ma librairie') ?></a>
+                </div>
+                <div class="collapse navbar-collapse" style="margin-top:50px;">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Accueil') ?></a></li>
+						<li class="active"><a href="<?php echo $this->url('blog') ?>"><?php echo $this->translate('Blog') ?></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container" style="margin-top:150px;">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; <?php echo date('Y') ?> -  <a href="http://gabriel-cassano.be/">Gabriele Cassano</a> - <?php echo 'Tous droits réservés.'; ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

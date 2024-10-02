@@ -1,0 +1,14 @@
+<!--
+On crée le modèle permettant d'accéder aux détails d'un post de blog transmis au modèle.
+-->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles-articles" id="post<?= $post->getId() ?>"><?= $post->getTitle() ?></h1>
+  </div>
+</div>
+
+<br>
+
+<dl> 
+    <dd class="articles-text"><?php echo $this->escapeHtml($this->post->getText());?></dd>
+</dl>

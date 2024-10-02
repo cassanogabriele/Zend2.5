@@ -1,0 +1,31 @@
+<?php
+$title = "Supprimer l'album";
+$this->headTitle($title);
+?>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles" id="title-blog" ><?php echo $this->escapeHtml($title); ?></h1>	
+  </div>
+</div>
+
+<p>
+	Etes-vous sûr de vouloir supprimer cet album  
+    '<?php echo $this->escapeHtml($album->title); ?>' par
+    '<?php echo $this->escapeHtml($album->artist); ?>'?
+</p>
+
+<?php
+$url = $this->url('album', array(
+    'action' => 'delete',
+    'id'     => $this->id,
+));
+?>
+
+<form action="<?php echo $url; ?>" method="post">
+	<div>
+		<input type="hidden" name="id" value="<?php echo (int) $album->id; ?>" />
+		<input type="submit" class="btn btn-info" name="del" value="Yes" />
+		<input type="submit" class="btn btn-danger" name="del" value="No" />
+	</div>
+</form>

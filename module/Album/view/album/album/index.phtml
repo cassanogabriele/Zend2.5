@@ -1,0 +1,54 @@
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<?php
+$title = 'Music Collection';
+$this->headTitle($title);
+$this->headLink()->appendStylesheet('/css/style.css'); 
+?>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 titles" id="title-blog" ><?php echo $this->escapeHtml($title); ?></h1>
+	
+    <p class="lead">Ajoute tes albums préférés.</p>
+  </div>
+</div>
+
+<p>
+	<a href="<?php echo $this->url('album', array('action'=>'add'));?>">Ajoute un nouvel album</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>Artiste</th>
+		<th>Titre</th>			
+		<th>&nbsp;</th>
+	</tr>
+		
+	<?php foreach ($this->paginator as $album) : // <-- change here! ?>
+    <tr>
+		<td><?php echo $this->escapeHtml($album->artist);?></td>
+        <td><?php echo $this->escapeHtml($album->title);?></td>        
+        <td>
+            <a href="<?php echo $this->url('album',
+            array('action' => 'edit', 'id' => $album->id));?>">Editer</a>
+            <a href="<?php echo $this->url('album',
+             array('action' => 'delete', 'id' => $album->id));?>">Supprimer</a>
+         </td>
+    </tr>	
+    <?php endforeach; ?>	
+</table>
+
+<?php
+echo $this->paginationControl(
+// L'objet "paginator"  
+$this->paginator,
+// Le style de défilement
+'sliding',
+// Le partiel à utiliser pour rendre le contrôle
+'partial/paginator.phtml',
+// L'itinéraire vers lequel se connecter lorsqu'un utilisateur clique sur un lien de contrôle
+array(
+	 'route' => 'album'
+	)
+ );
+?>
